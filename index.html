@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mente y Alma - Psicopedagogía Integral</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --navy-deep: #1A365D;
+            --navy-light: #2A4365;
+            --soft-purple: #8B5CF6;
+            --soft-bg: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-main: #334155;
+            --text-muted: #64748B;
+            --accent-green: #25D366;
+            --accent-green-hover: #1eb954;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            --soft-bg: #0F172A;
+            --card-bg: #1E293B;
+            --text-main: #F1F5F9;
+            --text-muted: #94A3B8;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--soft-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        nav {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy-deep);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dark-mode .logo {
+            color: #60A5FA;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--soft-purple);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--navy-deep), var(--navy-light));
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem 4rem;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero p.slogan {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--accent-green);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--accent-green-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--navy-deep);
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .dark-mode .section-title {
+            color: #60A5FA;
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .about-avatar {
+            width: 100%;
+            height: 260px;
+            background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+        }
+
+        .about-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--navy-deep);
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .dark-mode .about-content h3 {
+            color: #93C5FD;
+        }
+
+        .about-content .subtitle {
+            color: var(--soft-purple);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .about-content p {
+            color: var(--text-main);
+            margin-bottom: 1.2rem;
+            line-height: 1.7;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card h3 {
+            color: var(--navy-deep);
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .dark-mode .card h3 {
+            color: #93C5FD;
+        }
+
+        .card h3 i {
+            color: var(--soft-purple);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.2rem;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            padding: 0 1.2rem 1.2rem;
+            display: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        footer {
+            background-color: var(--navy-deep);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: var(--transition);
+        }
+
+        .contact-info a:hover {
+            opacity: 1;
+            color: var(--accent-green);
+        }
+
+        @media (max-width: 768px) {
+            .about-card {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#inicio" class="logo">
+                <i class="fa-solid fa-brain"></i> Mente y Alma
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#faq">Preguntas</a></li>
+                <li><a href="https://wa.me/593963497875?text=Hola,%20quisiera%20más%20información%20sobre%20Mente%20y%20Alma" target="_blank" class="btn btn-whatsapp" style="padding: 0.5rem 1rem;"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" title="Cambiar Tema">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <h1>Mente y Alma</h1>
+        <p class="slogan">Psicopedagogía Integral & Conectando Corazones y Mentes Diversas</p>
+        <div class="hero-btns">
+            <a href="https://wa.me/593963497875?text=Hola,%20deseo%20agendar%20una%20consulta%20psicopedagógica" class="btn btn-whatsapp" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Agendar por WhatsApp
+            </a>
+            <a href="#servicios" class="btn btn-secondary">
+                Ver Servicios
+            </a>
+        </div>
+    </section>
+
+    <section id="sobre-mi" class="container">
+        <h2 class="section-title">Sobre Mí</h2>
+        <div class="about-card">
+            <div class="about-avatar">
+                <i class="fa-solid fa-user-doctor"></i>
+            </div>
+            <div class="about-content">
+                <h3>María Rosa Jiménez Grijalva</h3>
+                <p class="subtitle">Licenciada en Psicopedagogía</p>
+                <p>
+                    Hola, soy <strong>María Rosa Jiménez Grijalva</strong>. Licenciada en Psicopedagogía, y actualmente estoy cursando un máster en Neuropsicología y Educación en la Universidad Internacional de La Rioja (UNIR).
+                </p>
+                <p>
+                    En <strong>Mente y Alma</strong> nos enfocamos en brindar una evaluación e intervención psicopedagógica integral, uniendo el rigor del desarrollo neurocognitivo con un trato cálido, empático y humano para cada familia.
+                </p>
+                <a href="https://wa.me/593963497875?text=Hola%20María%20Rosa,%20me%20gustaría%20conversar%20sobre%20sus%20servicios" class="btn btn-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> Conversar con María Rosa
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="container">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <h3><i class="fa-solid fa-brain"></i> Evaluación Psicopedagógica</h3>
+                    <p>Diagnóstico preciso de dificultades de aprendizaje, déficit de atención, lectoescritura y procesamiento cognitivo.</p>
+                </div>
+                <a href="https://wa.me/593963497875?text=Hola,%20solicito%20información%20sobre%20Evaluación%20Psicopedagógica" class="btn btn-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> Consultar Servicio
+                </a>
+            </div>
+            <div class="card">
+                <div>
+                    <h3><i class="fa-solid fa-shapes"></i> Reeducación & Estimulación</h3>
+                    <p>Intervenciones didácticas y ejercicios neuropsicológicos para mejorar funciones ejecutivas y memoria.</p>
+                </div>
+                <a href="https://wa.me/593963497875?text=Hola,%20solicito%20información%20sobre%20Estimulación%20Cognitiva" class="btn btn-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> Consultar Servicio
+                </a>
+            </div>
+            <div class="card">
+                <div>
+                    <h3><i class="fa-solid fa-heart"></i> Acompañamiento Emocional</h3>
+                    <p>Desarrollo de habilidades socioemocionales, regulación afectiva, autoestima y hábitos de estudio.</p>
+                </div>
+                <a href="https://wa.me/593963497875?text=Hola,%20solicito%20información%20sobre%20Acompañamiento%20Emocional" class="btn btn-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> Consultar Servicio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="container">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <div class="faq-item">
+            <button class="faq-question">
+                ¿Dónde se realizan las consultas?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                Ofrecemos atención presencial, sesiones a domicilio y modalidades virtuales adaptadas a las necesidades del estudiante y su familia.
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">
+                ¿A quiénes están dirigidos los servicios?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                Brindamos atención personalizada a niños, adolescentes y asesoría continua a padres de familia y docentes.
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>©️ 2026 Mente y Alma - Conectando corazones y mentes diversas. Todos los derechos reservados.</p>
+        <div class="contact-info">
+            <a href="mailto:menteyalma2026@outlook.com"><i class="fa-solid fa-envelope"></i> menteyalma2026@outlook.com</a>
+            <a href="https://wa.me/593963497875" target="_blank"><i class="fa-solid fa-phone"></i> +593 963497875</a>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.className = 'fa-solid fa-sun';
+            } else {
+                icon.className = 'fa-solid fa-moon';
+            }
+        });
+
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
